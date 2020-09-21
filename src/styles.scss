@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+
+main {
+  text-align: center;
+  position: relative;
+}
+
+.list-group-item {
+  text-align: left;
+}
+
+.black {
+  background-color: #000 !important;
+}
+
+@media (max-width: 992px) {
+  .navbar .container {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .view {
+    overflow: visible;
+    margin-top: -56px;
+  }
+}
+
+.navbar {
+  z-index: 1;
+  background-color: black;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+body::after {
+  content: "";
+  background: url("https://mdbootstrap.com/img/Photos/Others/img (50).jpg")
+    no-repeat center center;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+html,
+body {
+  height: 100%;
+}
+.flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.container,
+main {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+main {
+  // padding-top: 88px;
+  width: 980px;
+}
+
+h1,
+h2,
+h3,
+.label, .text {
+  color: #ffffff;
+}
+
+.gallery {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  -webkit-column-width: 33%;
+  -moz-column-width: 33%;
+  column-width: 33%;
+}
+
+
+@media (max-width: 450px) {
+  .gallery {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+  }
+}

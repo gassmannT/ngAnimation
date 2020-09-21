@@ -1,0 +1,7 @@
+<h1>Gallery</h1>
+
+<div class="gallery" id="gallery" @listAnimation>
+  <div class="mb-3 pics" *ngFor="let img of images">
+    <img class="img-fluid" [src]="img" />
+  </div>
+</div>

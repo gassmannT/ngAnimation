@@ -1,0 +1,32 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand"><strong>Animations</strong></a>
+      <div class="navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="todo">FadeIn / FadeOut</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="gallery">Gallery</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="routing">Routing</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="routing2">Routing 2</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="animation-builder"
+              >Animation Builder</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main [@routeAnimation]="prepRouteAnimation(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</main>
