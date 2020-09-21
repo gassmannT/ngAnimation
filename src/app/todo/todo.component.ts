@@ -1,10 +1,15 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { slideIn } from '../animation';
 
 @Component({
   selector: 'app-todo',
   templateUrl: 'todo.component.html',
   animations: [
+    trigger('slideIn', [
+      transition(':enter', [useAnimation(slideIn, { params: { top: '-10' } })])
+    ]),
+
     trigger('fade', [
       state('void', style({ opacity: 0 })),
       transition(':enter', [animate(1000)]),

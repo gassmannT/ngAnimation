@@ -8,7 +8,6 @@ import { Data, RouterOutlet } from '@angular/router';
   animations: [
     trigger('routeAnimation', [
       transition(':increment', [
-        style({ height: '!' }),
         query(':enter', style({ transform: 'translateX(100%)' })),
         query(':leave', [
           animateChild(),
@@ -35,7 +34,6 @@ import { Data, RouterOutlet } from '@angular/router';
         ])
       ]),
       transition(':decrement', [
-        style({ height: '!' }),
         query(':enter', style({ transform: 'translateX(-100%)' })),
         query(':leave', [
           animateChild(),

@@ -1,4 +1,4 @@
-import { animate, AnimationBuilder, AnimationFactory, AnimationPlayer, NoopAnimationPlayer, query, stagger, style } from '@angular/animations';
+import { animate, AnimationBuilder, AnimationFactory, AnimationPlayer, query, stagger, style } from '@angular/animations';
 import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +6,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
   templateUrl: 'animation-builder.component.html'
 })
 export class AnimationBuilderComponent implements OnInit {
-  paused = false;
-  done = false;
-  player: AnimationPlayer = new NoopAnimationPlayer();
+  player: AnimationPlayer;
   images = [];
 
   set position(pos: number) {
@@ -16,12 +14,8 @@ export class AnimationBuilderComponent implements OnInit {
     this.player.setPosition(pos / 100);
   }
 
-  constructor(private builder: AnimationBuilder, private element: ElementRef) {}
-
   ngOnInit(): void {
-    for (let i = 16; i <= 24; i++) {
-      this.images.push(`/assets/images/${i}.jpg`);
-    }
+    this.loadImages();
 
     setTimeout(() => {
       this.start();
@@ -30,19 +24,23 @@ export class AnimationBuilderComponent implements OnInit {
   }
 
   play(): void {
-    this.paused = false;
     this.player.play();
   }
 
   pause(): void {
-    this.paused = true;
     this.player.pause();
+  }
+
+  constructor(private builder: AnimationBuilder, private element: ElementRef) {}
+
+  start(): void {
+    this.player = this.buildPlayer();
   }
 
   private buildAnimation(): AnimationFactory {
     return this.builder.build([
-      query('.gallery', [
-        style({ opacity: 0, transform: 'translateY(0px)' }),
+      query('.gallery .pics', [
+        style({ opacity: 0, transform: 'translateY(-10px)' }),
         stagger(100, [
           animate('500ms', style({ opacity: 1, transform: 'none' }))
         ])
@@ -55,13 +53,9 @@ export class AnimationBuilderComponent implements OnInit {
     return animation.create(this.element.nativeElement);
   }
 
-  start(): void {
-    this.player = this.buildPlayer();
-    this.player.onStart(() => {
-      this.done = false;
-    });
-    this.player.onDone(() => {
-      this.done = true;
-    });
+  private loadImages(): void {
+    for (let i = 16; i <= 24; i++) {
+      this.images.push(`/assets/images/${i}.jpg`);
+    }
   }
 }

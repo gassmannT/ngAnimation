@@ -6,15 +6,22 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: 'gallery.component.html',
   animations: [
     trigger('listAnimation', [
-        transition('* => *', [
-          query(':enter', [
+      transition('* => *', [
+        query(
+          '.pics:enter',
+          [
             style({ opacity: 0, transform: 'translateY(-50px)' }),
             stagger(50, [
-              animate('250ms ease-out', style({ opacity: 1, transform: 'none' })),
-            ]),
-          ], { optional: true })
-        ]),
+              animate(
+                '400ms cubic-bezier(.41,.98,.81,.95)',
+                style({ opacity: 1, transform: 'none' })
+              )
+            ])
+          ],
+          { optional: true }
+        )
       ])
+    ])
   ]
 })
 export class GalleryComponent implements OnInit {

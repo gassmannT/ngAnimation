@@ -1,5 +1,6 @@
-<h1>Todo - fadeIn / fadeOut</h1>
+<h1 @slideIn>Todo - fadeIn / fadeOut</h1>
 <input class="form-control" #itemInput (keyup.enter)="addItem(itemInput.value); itemInput.value = '';">
 <div *ngIf="list" class="list-group">
     <button @fade type="button" *ngFor="let el of list" (click)="remove(el)" class="list-group-item">{{el.name}}</button>
 </div>
+
